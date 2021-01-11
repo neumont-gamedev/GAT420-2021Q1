@@ -4,61 +4,38 @@ using UnityEngine;
 
 public class BasicAgent : MonoBehaviour
 {
-    public float speed = 2.0f;
-    public float perceptionDistance = 10.0f;
-    public float perceptionAngle = 30.0f;
-    public bool flee = false;
+	[SerializeField] float maxSpeed = 2;
+	[SerializeField] float maxForce = 2;
+    [SerializeField] Perception perception = null;
+	[SerializeField] Behavior behavior = null;
+
+	public float MaxSpeed { get { return maxSpeed; } }
+	public float MaxForce { get { return maxForce; } }
+	public Vector3 Velocity { get; set; } = Vector3.zero;
+	public Vector3 Direction { get { return Velocity.normalized; } }
+
+	Vector3 acceleration = Vector3.zero;
 
     void Update()
     {
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
-        GameObject nearestGameObject = GetNearestGameObject(gameObjects, out float nearestDistance);
+		acceleration = Vector3.zero;
 
-        if (nearestDistance < perceptionDistance)
+		// update acceleration with behavior force
+		GameObject[] gameObjects = perception.GetGameObjects();
+		Vector3 force = behavior.Execute(gameObjects);
+		acceleration += force;
+
+		// update velocity and position
+		Velocity += acceleration * Time.deltaTime;
+		Vector3.ClampMagnitude(Velocity, maxSpeed);
+		transform.position += Velocity * Time.deltaTime;
+
+		if (Velocity.magnitude > 0.1f)
 		{
-            Debug.DrawLine(transform.position, nearestGameObject.transform.position);
-            Debug.DrawRay(transform.position, transform.forward, Color.red);
-
-            Vector3 direction = (nearestGameObject.transform.position - transform.position).normalized;
-            float dot = Vector3.Dot(transform.forward, direction);
-            dot = Mathf.Clamp(dot, -1, 1);
-            float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
-
-            if (angle <= perceptionAngle)
-			{
-                direction = (flee) ? -direction : direction;
-                Vector3 velocity = direction * speed;
-                transform.position += velocity * Time.deltaTime;
-
-                if (direction.magnitude > 0.1f)
-                {
-                    transform.rotation = Quaternion.LookRotation(direction);
-                }
-            }
-        }
-
-        transform.position = Utilities.Wrap(transform.position, new Vector3(-10, -10, -10), new Vector3(10, 10, 10));
-    }
-
-    GameObject GetNearestGameObject(GameObject[] gameObjects, out float nearestDistance)
-	{
-        nearestDistance = float.MaxValue;
-
-        GameObject nearestGameObject = null;
-        foreach(GameObject gameObject in gameObjects)
-		{
-            if (gameObject == this.gameObject) continue;
-
-            float distance = Vector3.Distance(transform.position, gameObject.transform.position);
-            if (distance < nearestDistance)
-			{
-                nearestDistance = distance;
-                nearestGameObject = gameObject;
-			}
+			transform.rotation = Quaternion.LookRotation(Velocity);
 		}
 
-        return nearestGameObject;
-	}
-
-
+		transform.position = Utilities.Wrap(transform.position, new Vector3(-10, -10, -10), new Vector3(10, 10, 10));
+    }
 }
+
