@@ -4,38 +4,35 @@ using UnityEngine;
 
 public class BasicAgent : MonoBehaviour
 {
-	[SerializeField] float maxSpeed = 2;
-	[SerializeField] float maxForce = 2;
-    [SerializeField] Perception perception = null;
-	[SerializeField] Behavior behavior = null;
+    public float maxSpeed = 2;
+    public float maxForce = 2;
 
-	public float MaxSpeed { get { return maxSpeed; } }
-	public float MaxForce { get { return maxForce; } }
-	public Vector3 Velocity { get; set; } = Vector3.zero;
-	public Vector3 Direction { get { return Velocity.normalized; } }
+    public Perception perception;
+    public Behavior behavior;
 
-	Vector3 acceleration = Vector3.zero;
+    public Vector3 Velocity { get; set; }
+    public Vector3 Acceleration { get; set; }
+    public Vector3 Direction { get { return Velocity.normalized; } }
 
     void Update()
     {
-		acceleration = Vector3.zero;
+        Acceleration = Vector3.zero;
 
-		// update acceleration with behavior force
-		GameObject[] gameObjects = perception.GetGameObjects();
-		Vector3 force = behavior.Execute(gameObjects);
-		acceleration += force;
+        GameObject[] gameObjects = perception.GetGameObjects();
+        Vector3 force = behavior.Execute(gameObjects);
+        Acceleration += force;
 
-		// update velocity and position
-		Velocity += acceleration * Time.deltaTime;
-		Vector3.ClampMagnitude(Velocity, maxSpeed);
-		transform.position += Velocity * Time.deltaTime;
+        Velocity += Acceleration * Time.deltaTime;
+        Velocity = Vector3.ClampMagnitude(Velocity, maxSpeed);
+        transform.position += Velocity * Time.deltaTime;
 
-		if (Velocity.magnitude > 0.1f)
-		{
-			transform.rotation = Quaternion.LookRotation(Velocity);
-		}
+        Debug.DrawRay(transform.position, Velocity, Color.white);
 
-		transform.position = Utilities.Wrap(transform.position, new Vector3(-10, -10, -10), new Vector3(10, 10, 10));
+        if (Direction.magnitude > 0.1f)
+        {
+            transform.rotation = Quaternion.LookRotation(Direction);
+        }
+
+        transform.position = Utilities.Wrap(transform.position, new Vector3(-10, -10, -10), new Vector3(10, 10, 10));
     }
 }
-

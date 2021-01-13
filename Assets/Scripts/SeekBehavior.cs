@@ -10,12 +10,14 @@ public class SeekBehavior : Behavior
 
 		if (gameObjects != null && gameObjects.Length > 0)
 		{
-			BasicAgent agent = gameObject.GetComponent<BasicAgent>();
-			GameObject target = gameObjects[0];
+			GameObject target = gameObjects[0]; // nearest
 
 			Vector3 direction = (target.transform.position - transform.position).normalized;
-			Vector3 desired = direction * agent.MaxSpeed;
-			force = Vector3.ClampMagnitude(desired - agent.Velocity, agent.MaxForce);
+			Vector3 desired = direction * Agent.maxSpeed;
+			force = Vector3.ClampMagnitude(desired - Agent.Velocity, Agent.maxForce);
+
+			Debug.DrawRay(transform.position, desired, Color.red); // desired
+			Debug.DrawRay(transform.position + Agent.Velocity, force, Color.green); // steering
 		}
 
 		return force;

@@ -13,8 +13,11 @@ public class FleeBehavior : Behavior
 			GameObject target = gameObjects[0];
 
 			Vector3 direction = (transform.position - target.transform.position).normalized;
-			Vector3 desired = direction * Agent.MaxSpeed;
-			force = Vector3.ClampMagnitude(desired - Agent.Velocity, Agent.MaxForce);
+			Vector3 desired = direction * Agent.maxSpeed;
+			force = Vector3.ClampMagnitude(desired - Agent.Velocity, Agent.maxForce);
+
+			Debug.DrawRay(transform.position, desired, Color.red); // desired
+			Debug.DrawRay(transform.position + Agent.Velocity, force, Color.green); // steering
 		}
 
 		return force;
