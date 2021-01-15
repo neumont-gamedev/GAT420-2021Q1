@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AgentCreator : MonoBehaviour
 {
+    [Range(0, 5)] public float radius = 1;
     public BasicAgent[] agents;
     public LayerMask layerMask;
 
@@ -14,7 +15,9 @@ public class AgentCreator : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, layerMask))
 			{
-                Instantiate(agents[0], hitInfo.point, Quaternion.identity);
+                Vector3 offset = Random.insideUnitSphere * radius;
+
+                Instantiate(agents[0], hitInfo.point + offset, Quaternion.identity);
 			}
 		}
     }

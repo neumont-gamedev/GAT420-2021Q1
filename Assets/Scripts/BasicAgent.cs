@@ -22,8 +22,8 @@ public class BasicAgent : MonoBehaviour
         GameObject[] gameObjects = perception.GetGameObjects();
         if (gameObjects.Length == 0)
 		{
-            Vector3 force = wanderBehavior.Execute(gameObjects);
-            Acceleration += force;
+            //Vector3 force = wanderBehavior.Execute(gameObjects);
+            //Acceleration += force;
         }
         else
 		{
