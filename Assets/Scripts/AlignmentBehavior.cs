@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CohesionBehavior : Behavior
+public class AlignmentBehavior : Behavior
 {
 	public override Vector3 Execute(GameObject[] gameObjects)
 	{
@@ -10,17 +10,15 @@ public class CohesionBehavior : Behavior
 
 		if (gameObjects != null && gameObjects.Length > 0)
 		{
-			// ****
-			Vector3 positions = Vector3.zero;
+			Vector3 velocities = Vector3.zero;
 			foreach (GameObject gameObject in gameObjects)
 			{
-				positions = positions + gameObject.transform.position;
+				BasicAgent agent = gameObject.GetComponent<BasicAgent>();
+				velocities = velocities + agent.Velocity;
 			}
 
-			Vector3 center = positions / gameObjects.Length;
-			Vector3 direction = (center - transform.position).normalized;
-			// ****
-
+			Vector3 direction = (velocities / gameObjects.Length).normalized;
+			
 			Vector3 desired = direction * Agent.maxSpeed;
 			force = Vector3.ClampMagnitude(desired - Agent.Velocity, Agent.maxForce);
 
