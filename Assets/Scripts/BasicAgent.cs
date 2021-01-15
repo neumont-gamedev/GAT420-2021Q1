@@ -27,9 +27,9 @@ public class BasicAgent : MonoBehaviour
         }
         else
 		{
-            foreach (Behavior behavior in behaviors)
+            foreach(Behavior behavior in behaviors)
 			{
-                Vector3 force = behavior.Execute(gameObjects);
+                Vector3 force = behavior.Execute(gameObjects) * behavior.strength;
                 Acceleration += force;
 			}
 		}
