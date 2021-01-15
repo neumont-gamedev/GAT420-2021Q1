@@ -22,14 +22,14 @@ public class BasicAgent : MonoBehaviour
         GameObject[] gameObjects = perception.GetGameObjects();
         if (gameObjects.Length == 0)
 		{
-            //Vector3 force = wanderBehavior.Execute(gameObjects);
+            //Vector3 force = wanderBehavior.Execute();
             //Acceleration += force;
         }
         else
 		{
             foreach(Behavior behavior in behaviors)
 			{
-                Vector3 force = behavior.Execute(gameObjects) * behavior.strength;
+                Vector3 force = behavior.Execute() * behavior.strength;
                 Acceleration += force;
 			}
 		}
@@ -45,6 +45,6 @@ public class BasicAgent : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(Direction);
         }
 
-        transform.position = Utilities.Wrap(transform.position, new Vector3(-10, -10, -10), new Vector3(10, 10, 10));
+        transform.position = Utilities.Wrap(transform.position, new Vector3(-20, -20, -20), new Vector3(20, 20, 20));
     }
 }
