@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAgent : MonoBehaviour
+public class AutonomousAgent : MonoBehaviour
 {
     public float maxSpeed = 2;
     public float maxForce = 2;
@@ -22,8 +22,8 @@ public class BasicAgent : MonoBehaviour
         GameObject[] gameObjects = perception.GetGameObjects();
         if (gameObjects.Length == 0)
 		{
-            //Vector3 force = wanderBehavior.Execute();
-            //Acceleration += force;
+            Vector3 force = wanderBehavior.Execute();
+            Acceleration += force;
         }
         else
 		{

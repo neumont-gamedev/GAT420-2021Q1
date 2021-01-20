@@ -15,7 +15,7 @@ public class AlignmentBehavior : Behavior
 			Vector3 velocities = Vector3.zero;
 			foreach (GameObject gameObject in gameObjects)
 			{
-				BasicAgent agent = gameObject.GetComponent<BasicAgent>();
+				AutonomousAgent agent = gameObject.GetComponent<AutonomousAgent>();
 				velocities = velocities + agent.Velocity;
 			}
 			Vector3 direction = (velocities / gameObjects.Length).normalized;

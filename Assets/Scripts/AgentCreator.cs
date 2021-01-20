@@ -5,7 +5,7 @@ using UnityEngine;
 public class AgentCreator : MonoBehaviour
 {
     [Range(0, 5)] public float radius = 1;
-    public BasicAgent[] agents;
+    public AutonomousAgent[] agents;
     public LayerMask layerMask;
 
     void Update()

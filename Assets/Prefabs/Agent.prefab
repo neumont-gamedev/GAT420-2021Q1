@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9209208957048889025}
   - component: {fileID: 9209208957048889028}
   - component: {fileID: 5661624684913373564}
+  - component: {fileID: 7375030419896927742}
   - component: {fileID: 891086590441182550}
   - component: {fileID: 8844486664266768830}
   - component: {fileID: 3002767610107433581}
@@ -37,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 9209208957048889036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9209208958023016348}
   m_Father: {fileID: 0}
@@ -52,16 +53,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 9209208957048889036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189e8558f63bcb5489aa148fa3ad0e7d, type: 3}
+  m_Script: {fileID: 11500000, guid: d257a2e266f4f994f917cf9741f9a843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
-  maxForce: 4
+  maxSpeed: 10
+  maxForce: 5
   perception: {fileID: 9209208957048889028}
   behaviors:
   - {fileID: 891086590441182550}
-  - {fileID: 3002767610107433581}
   - {fileID: 8844486664266768830}
+  - {fileID: 3002767610107433581}
+  - {fileID: 9209208957048889030}
   wanderBehavior: {fileID: -3567449217455689288}
 --- !u!114 &9209208957048889028
 MonoBehaviour:
@@ -75,8 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a145c0003facbd24b9a4aa39023cb150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  angle: 170
+  distance: 5
+  angle: 120
   tagName: Agent1
 --- !u!114 &5661624684913373564
 MonoBehaviour:
@@ -93,6 +95,21 @@ MonoBehaviour:
   distance: 1
   angle: 170
   tagName: Agent1
+--- !u!114 &7375030419896927742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209208957048889036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a145c0003facbd24b9a4aa39023cb150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 10
+  angle: 90
+  tagName: Player
 --- !u!114 &891086590441182550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 1
-  perception: {fileID: 0}
+  perception: {fileID: 7375030419896927742}
 --- !u!114 &-3567449217455689288
 MonoBehaviour:
   m_ObjectHideFlags: 0
