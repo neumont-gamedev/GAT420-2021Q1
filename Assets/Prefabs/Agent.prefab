@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 9209208957048889030}
   - component: {fileID: -3567449217455689288}
   - component: {fileID: 9209208957048889028}
+  - component: {fileID: 6577718851774470512}
+  - component: {fileID: -8301489730609713327}
   - component: {fileID: 9209208957048889027}
   - component: {fileID: 9209208957048889026}
   - component: {fileID: 9209208957048889037}
@@ -36,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 9209208957048889036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9209208958023016348}
   m_Father: {fileID: 0}
@@ -61,6 +63,7 @@ MonoBehaviour:
   - {fileID: 891086590441182550}
   - {fileID: 3002767610107433581}
   - {fileID: 8844486664266768830}
+  - {fileID: 9209208957048889030}
   wanderBehavior: {fileID: -3567449217455689288}
 --- !u!114 &891086590441182550
 MonoBehaviour:
@@ -74,8 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a95f7476b0c3bc4e8785cb61d7335e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 1
-  perception: {fileID: 0}
+  strength: 2
+  perception: {fileID: 6577718851774470512}
 --- !u!114 &8844486664266768830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 1
-  perception: {fileID: 0}
+  perception: {fileID: 9209208957048889028}
 --- !u!114 &3002767610107433581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 1
-  perception: {fileID: 0}
+  perception: {fileID: 9209208957048889028}
 --- !u!114 &9209208957048889031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 1
-  perception: {fileID: 0}
+  perception: {fileID: -8301489730609713327}
 --- !u!114 &9209208957048889030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870d03d34a89f3d4fa10b6b2f55ca472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 1
-  perception: {fileID: 0}
+  strength: 2
+  perception: {fileID: -8301489730609713327}
 --- !u!114 &-3567449217455689288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 1
-  perception: {fileID: 0}
+  perception: {fileID: 9209208957048889028}
   displacement: 5
   radius: 3
   distance: 1
@@ -161,9 +164,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a145c0003facbd24b9a4aa39023cb150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
+  distance: 5
+  angle: 120
+  tagName: Agent1
+--- !u!114 &6577718851774470512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209208957048889036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a145c0003facbd24b9a4aa39023cb150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1
   angle: 170
   tagName: Agent1
+--- !u!114 &-8301489730609713327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209208957048889036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a145c0003facbd24b9a4aa39023cb150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 10
+  angle: 90
+  tagName: Player
 --- !u!33 &9209208957048889027
 MeshFilter:
   m_ObjectHideFlags: 0

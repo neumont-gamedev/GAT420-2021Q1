@@ -9,5 +9,5 @@ public abstract class Behavior : MonoBehaviour
 
 	public BasicAgent Agent { get { return GetComponent<BasicAgent>(); } }
 
-	public abstract Vector3 Execute(GameObject[] gameObjects);
+	public abstract Vector3 Execute();
 }
