@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAgent : MonoBehaviour
+public class AutonomousAgent : MonoBehaviour
 {
     public float maxSpeed = 2;
     public float maxForce = 2;
