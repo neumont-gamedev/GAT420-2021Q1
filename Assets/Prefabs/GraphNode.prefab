@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7927037069971628500}
   - component: {fileID: 2707848047296398622}
   - component: {fileID: 4168196308555391771}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GraphNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,62 +4,35 @@ using UnityEngine;
 
 public class GraphNodeCreator : MonoBehaviour
 {
-    public GraphNode graphNode;
+    public GameObject nodeGameObject;
     public LayerMask layerMask;
     public float range = 1;
-
+    public GraphNodeSelector graphNodeSelector;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && graphNodeSelector.IsActive == false)
 		{
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, layerMask))
 			{
-                GraphNode node = Instantiate(graphNode, hitInfo.point, Quaternion.identity);
-                LinkNode(node);
+                GameObject gameObject = Instantiate(nodeGameObject, hitInfo.point, Quaternion.identity, transform);
+                GraphNode graphNode = gameObject.GetComponent<GraphNode>();
+
+                GraphNode[] graphNodes = GraphNode.GetGraphNodes();
+                GraphNode.ClearNodeLinks(graphNodes);
+                GraphNode.LinkNodes(graphNodes, range);
 			}
 		}
     }
 
-    public void LinkNode(GraphNode node)
-	{
-        Collider[] colliders = Physics.OverlapSphere(node.transform.position, range);
-        foreach(Collider collider in colliders)
-		{
-            GraphNode otherNode = collider.GetComponent<GraphNode>();
-            if (otherNode != null && otherNode != node)
-			{
-                GraphNode.Edge edge;
-                edge.nodeA = node;
-                edge.nodeB = otherNode;
-
-                node.Edges.Add(edge);
-			}
-		}
-	}
-
-
-    public void LinkNodes()
-	{
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Node");
-        foreach(GameObject gameObject in gameObjects)
-		{
-            GraphNode graphNode = gameObject.GetComponent<GraphNode>();
-            if (graphNode != null)
-			{
-                LinkNode(graphNode);
-			}
-		}
-	}
-
-	public void ClearNodes()
+    public void ClearNodes()
 	{
 		// get all children graph nodes
-		GraphNode[] nodes = GetComponentsInChildren<GraphNode>();
-		foreach (GraphNode node in nodes)
+		GraphNode[] graphNodes = GraphNode.GetGraphNodes();
+		foreach (GraphNode graphNode in graphNodes)
 		{
-			Destroy(node.gameObject);
+			Destroy(graphNode.gameObject);
 		}
 	}
 }
