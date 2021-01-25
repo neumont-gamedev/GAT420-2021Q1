@@ -8,7 +8,6 @@ public class GraphNodeCreator : MonoBehaviour
     public LayerMask layerMask;
     public float range = 1;
 
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -17,41 +16,16 @@ public class GraphNodeCreator : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, layerMask))
 			{
                 GraphNode node = Instantiate(graphNode, hitInfo.point, Quaternion.identity);
-                LinkNode(node);
+				GraphNode.UnlinkNodes();
+                GraphNode.LinkNodes(range);
 			}
 		}
     }
 
-    public void LinkNode(GraphNode node)
-	{
-        Collider[] colliders = Physics.OverlapSphere(node.transform.position, range);
-        foreach(Collider collider in colliders)
-		{
-            GraphNode otherNode = collider.GetComponent<GraphNode>();
-            if (otherNode != null && otherNode != node)
-			{
-                GraphNode.Edge edge;
-                edge.nodeA = node;
-                edge.nodeB = otherNode;
-
-                node.Edges.Add(edge);
-			}
-		}
-	}
 
 
-    public void LinkNodes()
-	{
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Node");
-        foreach(GameObject gameObject in gameObjects)
-		{
-            GraphNode graphNode = gameObject.GetComponent<GraphNode>();
-            if (graphNode != null)
-			{
-                LinkNode(graphNode);
-			}
-		}
-	}
+
+
 
 	public void ClearNodes()
 	{
