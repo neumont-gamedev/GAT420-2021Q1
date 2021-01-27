@@ -21,7 +21,7 @@ public static class SearchDFS
 			GraphNode node = nodes.Peek();
 			// mark node visited
 			node.Visited = true;
-			
+
 			bool forward = false;
 			// search node edges for unvisited node
 			foreach (GraphNode.Edge edge in node.Edges)

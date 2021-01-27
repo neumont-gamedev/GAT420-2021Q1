@@ -26,7 +26,12 @@ public class GraphNode : SearchNode
 	{
         public GraphNode nodeA;
         public GraphNode nodeB;
-	}
+
+        public static float Distance(Edge edge)
+        {
+            return (edge.nodeA.transform.position - edge.nodeB.transform.position).magnitude;
+        }
+    }
 
     public List<Edge> Edges { get; set; } = new List<Edge>();
     public eType Type { get; set; } = eType.Default;

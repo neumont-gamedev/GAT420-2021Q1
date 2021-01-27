@@ -33,7 +33,7 @@ public class SearchBuilder : MonoBehaviour
 
 		debugLines.Reset();
 		// set all path nodes to path type amd draw lines
-		foreach (GraphNode graphNode in path)
+        foreach (GraphNode graphNode in path)
 		{
             if (graphNode.Type == GraphNode.eType.Default)
 			{
@@ -48,17 +48,17 @@ public class SearchBuilder : MonoBehaviour
 	{
 		maxSteps = int.MaxValue;
 		SearchNodes();
-	}
+			}
 
 	public void OnSteps(float steps)
 	{
 		maxSteps = (int)steps;
 		SearchNodes();
-	}
+		}
 
 	public void OnReset()
 	{
 		GraphNode.Reset();
 		debugLines.Reset();
-	}
+    }
 }
