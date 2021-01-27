@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GraphNodeCreator : MonoBehaviour
 {
-    public GameObject nodeGameObject;
+    public GameObject graphNode;
     public LayerMask layerMask;
     public float range = 1;
     public GraphNodeSelector graphNodeSelector;
@@ -16,7 +16,7 @@ public class GraphNodeCreator : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, layerMask))
 			{
-                GraphNode node = Instantiate(graphNode, hitInfo.point, Quaternion.identity);
+                Instantiate(graphNode, hitInfo.point, Quaternion.identity);
 				GraphNode.UnlinkNodes();
                 GraphNode.LinkNodes(range);
 			}
