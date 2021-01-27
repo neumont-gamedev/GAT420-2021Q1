@@ -30,6 +30,7 @@ public class GraphNode : SearchNode
 
     public List<Edge> Edges { get; set; } = new List<Edge>();
     public eType Type { get; set; } = eType.Default;
+    public GraphNode Parent { get; set; } = null;
     public bool Visited { get; set; } = false;
 
 	void Update()
@@ -105,6 +106,18 @@ public class GraphNode : SearchNode
             {
                 graphNode.Type = eType.Default;
             }
+        }
+    }
+
+    public static void Reset()
+	{
+        ClearNodeType(eType.Path);
+        ClearNodeType(eType.Visited);
+
+        GraphNode[] graphNodes = GetGraphNodes();
+        foreach (GraphNode graphNode in graphNodes)
+        {
+            graphNode.Visited = false;
         }
     }
 }

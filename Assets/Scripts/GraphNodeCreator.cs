@@ -22,11 +22,6 @@ public class GraphNodeCreator : MonoBehaviour
 		}
     }
 
-
-
-
-
-
 	public void ClearNodes()
 	{
 		// get all children graph nodes
