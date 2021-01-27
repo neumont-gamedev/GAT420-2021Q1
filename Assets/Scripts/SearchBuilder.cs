@@ -48,13 +48,13 @@ public class SearchBuilder : MonoBehaviour
 	{
 		maxSteps = int.MaxValue;
 		SearchNodes();
-			}
+	}
 
 	public void OnSteps(float steps)
 	{
 		maxSteps = (int)steps;
 		SearchNodes();
-		}
+	}
 
 	public void OnReset()
 	{
