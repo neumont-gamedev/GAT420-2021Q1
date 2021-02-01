@@ -8,10 +8,14 @@ public class WaypointNode : SearchNode
 
 	private void OnTriggerEnter(Collider other)
 	{
-		SearchAgent searchAgent = other.GetComponent<SearchAgent>();
-		if (searchAgent != null && searchAgent.Waypoint == this)
+		Agent agent = other.GetComponent<Agent>();
+		if (agent != null)
 		{
-			searchAgent.Waypoint = nextWaypoint;
+			SearchPath searchPath = agent.GetComponent<SearchPath>();
+			if (searchPath.Node == this)
+			{
+				searchPath.Node = nextWaypoint;
+			}
 		}
 	}
 }
