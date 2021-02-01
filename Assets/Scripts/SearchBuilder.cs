@@ -42,19 +42,15 @@ public class SearchBuilder : MonoBehaviour
 
 		if (found)
 		{
-			int steps = path.Count;
 			float distance = 0;
 			for (int i = 0; i < path.Count - 1; i++)
 			{
-				distance += Vector3.Distance(path[i].transform.position, path[i + 1].transform.position);
+				distance += Vector3.Distance(path[i].transform.position, path[i+1].transform.position);
 			}
 
-			infoText.text = "Steps: " + steps + "\nDistance: " + distance;
+			infoText.text = "Nodes: " + path.Count + "\nDistance: " + distance;
 		}
-		else
-		{
-			infoText.text = "";
-		}
+
 	}
 
 	public void OnSearch()
@@ -74,9 +70,9 @@ public class SearchBuilder : MonoBehaviour
 		GraphNode.Reset();
     }
 
-	public void OnSearchSelect(int value)
+	public void OnSearchSelect(int index)
 	{
-		switch (value)
+		switch (index)
 		{
 			case 0:
 				Search = SearchDFS.Search;
