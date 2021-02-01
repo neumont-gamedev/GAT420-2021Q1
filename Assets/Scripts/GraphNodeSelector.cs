@@ -13,21 +13,21 @@ public class GraphNodeSelector : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, layerMask))
-		{
+        {
             GraphNode graphNode = hitInfo.collider.GetComponent<GraphNode>();
 
-            selection.SetActive(true);
+                selection.SetActive(true);
             selection.transform.position = hitInfo.collider.transform.position;
 
             if (Input.GetMouseButtonDown(1))
-			{
-                if (Input.GetKey(KeyCode.S))
-				{
+                {
+                    if (Input.GetKey(KeyCode.S))
+				    {
                     GraphNode.ClearNodeType(GraphNode.eType.Source);
                     graphNode.Type = GraphNode.eType.Source;
-				}
+                    }
                 else if (Input.GetKey(KeyCode.D))
-                {
+                    {
                     GraphNode.ClearNodeType(GraphNode.eType.Destination);
                     graphNode.Type = GraphNode.eType.Destination;
                 }
@@ -38,4 +38,9 @@ public class GraphNodeSelector : MonoBehaviour
             selection.SetActive(false);
 		}
     }
+
+
+
+
+
 }
