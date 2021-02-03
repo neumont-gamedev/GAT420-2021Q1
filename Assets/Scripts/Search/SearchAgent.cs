@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchAgent : MonoBehaviour
+public class SearchAgent : Agent
 {
-    public WaypointNode Waypoint;
+    public SearchPath searchPath;
 
-    void Update()
+	void Update()
     {
-        if (Waypoint != null)
-		{
-            Vector3 direction = Waypoint.transform.position - transform.position;
-            transform.position += direction.normalized * 2 * Time.deltaTime;
-		}
+        searchPath.Move(movement);
     }
 }
