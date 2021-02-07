@@ -14,6 +14,7 @@ public class StateAgent : Agent
 
     void Update()
     {
+        movement.Reset();
         StateMachine.Execute();
     }
 }

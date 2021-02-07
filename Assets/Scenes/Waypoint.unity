@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 1625066508}
   - component: {fileID: 1625066507}
   - component: {fileID: 1625066510}
+  - component: {fileID: 1625066511}
   - component: {fileID: 1625066506}
   - component: {fileID: 1625066509}
   m_Layer: 0
@@ -576,11 +577,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625066504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d67b64651aa08344be9d6a3676ab251, type: 3}
+  m_Script: {fileID: 11500000, guid: 45edfdf413b6f3346976a521ef7b0a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMax: 3
-  accelerationMax: 10
+  speedMax: 2
+  accelerationMax: 2
   orientToMovement: 1
 --- !u!114 &1625066508
 MonoBehaviour:
@@ -620,10 +621,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625066504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb774baef9d80548beae8a6ddbeb804, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e19b825c8c32f74e9181245789ba2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialNode: {fileID: 2056413997}
+--- !u!114 &1625066511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625066504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a145c0003facbd24b9a4aa39023cb150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 10
+  angle: 30
+  tagName: 
 --- !u!1 &1773762916
 GameObject:
   m_ObjectHideFlags: 0

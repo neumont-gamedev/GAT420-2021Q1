@@ -13,12 +13,15 @@ public class RaycastPerception : Perception
 	{
 		List<GameObject> gameObjects = new List<GameObject>();
 
+		float rayDistance = distance;
+
 		Ray ray = new Ray(raycastTransform.position, raycastTransform.forward);
-		if (Physics.Raycast(ray, out RaycastHit raycastHit, distance))
+		if (Physics.Raycast(ray, out RaycastHit raycastHit, rayDistance))
 		{
+			rayDistance = raycastHit.distance;
 			gameObjects.Add(raycastHit.collider.gameObject);
 		}
-		Debug.DrawRay(ray.origin, ray.direction * distance);
+		Debug.DrawRay(ray.origin, ray.direction * rayDistance);
 
 		return gameObjects.ToArray();
 	}

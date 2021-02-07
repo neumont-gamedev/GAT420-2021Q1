@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public Vector3 Acceleration { get; set; }
     public Vector3 Direction { get { return Velocity.normalized; } }
 
-	void Update()
+	public void Reset()
     {
         Acceleration = Vector3.zero;
     }
