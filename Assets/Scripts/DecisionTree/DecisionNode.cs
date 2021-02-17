@@ -13,7 +13,6 @@ public abstract class DecisionNode : MonoBehaviour
 	}
 
 	public eState State { get; set; }
-	protected int prevFrame = -1;
 
 	public abstract void Execute();
 }
