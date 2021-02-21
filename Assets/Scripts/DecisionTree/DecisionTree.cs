@@ -7,7 +7,7 @@ public class DecisionTree : MonoBehaviour
     public DecisionNode root;
     public static int frame = 0;
 
-    public void Execute()
+    public void Update()
     {
         DecisionNode[] nodes = FindObjectsOfType<DecisionNode>();
         foreach (var node in nodes) node.State = DecisionNode.eState.Inactive;

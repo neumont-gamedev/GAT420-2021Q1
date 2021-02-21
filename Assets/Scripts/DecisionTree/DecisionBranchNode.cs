@@ -11,7 +11,7 @@ public class DecisionBranchNode : DecisionNode
 	public override void Execute()
 	{
 		State = (condition.IsTrue()) ? eState.ConditionTrue : eState.ConditionFalse;
-
+		
 		DecisionNode node = (State == eState.ConditionTrue) ? trueNode : falseNode;
 		node?.Execute();
 	}
