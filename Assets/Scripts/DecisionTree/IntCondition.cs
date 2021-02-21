@@ -12,9 +12,25 @@ public class IntCondition : Condition
 	}
 
 	public eCompare compare { get; set; } = eCompare.Equal;
+	public int compareInt
+	{
+		set
+		{
+			compare = (eCompare)value;
+		}
+	}
 
 	public int value { get; set; }
-	public int parameter { get; set; }
+	public string valueString
+	{
+		set
+		{
+			int.TryParse(value, out int v);
+			this.value = v;
+		}
+	}
+
+	public float parameter { get; set; }
 
 	public override bool IsTrue()
 	{
@@ -23,13 +39,13 @@ public class IntCondition : Condition
 		switch (compare)
 		{
 			case eCompare.Equal:
-				isTrue = (parameter == value);
+				isTrue = ((int)parameter == value);
 				break;
 			case eCompare.Greater:
-				isTrue = (parameter > value);
+				isTrue = ((int)parameter > value);
 				break;
 			case eCompare.Less:
-				isTrue = (parameter < value);
+				isTrue = ((int)parameter < value);
 				break;
 			default:
 				break;
