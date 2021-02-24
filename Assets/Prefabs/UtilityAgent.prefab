@@ -436,6 +436,36 @@ Transform:
   m_Father: {fileID: 6165223424087329867}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1234542239530195831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5581661685780980893}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5581661685780980893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234542239530195831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2531206441587977478}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1245412811425247710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1122,7 @@ GameObject:
   - component: {fileID: 2531206441587977478}
   - component: {fileID: 8484933488577214332}
   - component: {fileID: 2891152671026557842}
+  - component: {fileID: 6088300151114681767}
   - component: {fileID: 7298212726734062946}
   - component: {fileID: -8988805268240362705}
   - component: {fileID: -7198947785043644029}
@@ -1120,6 +1151,7 @@ Transform:
   - {fileID: 4255072717284040460}
   - {fileID: 7677278127740683952}
   - {fileID: 8030186509850529170}
+  - {fileID: 5581661685780980893}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1157,6 +1189,20 @@ MonoBehaviour:
   perception: {fileID: 0}
   movement: {fileID: -7198947785043644029}
   animator: {fileID: 8484933488577214332}
+--- !u!114 &6088300151114681767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912551831571298236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df5b5d037160e04498e7764b6fbf4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalUI: {fileID: 0}
+  goalUIParent: {fileID: 0}
 --- !u!114 &7298212726734062946
 MonoBehaviour:
   m_ObjectHideFlags: 0
