@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca8fc324a98b5943acc1da45eb21564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: {fileID: 9014111190845849265}
+  descriptionText: {fileID: 0}
   nodeImage: {fileID: 7266970287348046260}
   trueImage: {fileID: 7266970287649495812}
   falseImage: {fileID: 7266970287552105997}
@@ -2068,7 +2068,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7266970287348046248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7b6919d5d73a974d951245bd961671a, type: 3}
+  m_Script: {fileID: 11500000, guid: e3b5fff0c8f3429459ca44bd4d54de1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7266970287552105999

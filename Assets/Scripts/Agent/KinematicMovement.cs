@@ -34,4 +34,9 @@ public class KinematicMovement : Movement
 	{
         Velocity = Vector3.zero;
 	}
+
+    public override void Resume()
+    {
+        //
+    }
 }

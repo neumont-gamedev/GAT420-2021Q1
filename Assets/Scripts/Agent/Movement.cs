@@ -16,4 +16,5 @@ public abstract class Movement : MonoBehaviour
     public abstract void MoveTowards(Vector3 target);
     public abstract void ApplyForce(Vector3 force);
     public abstract void Stop();
+    public abstract void Resume();
 }
