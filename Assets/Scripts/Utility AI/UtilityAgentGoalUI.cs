@@ -11,7 +11,6 @@ public class UtilityAgentGoalUI : MonoBehaviour
     public Slider utility;
 
     public UtilityAgentGoal utilityAgentGoal { get; set; }
-
     void Update()
     {
         id.text = utilityAgentGoal.id;
