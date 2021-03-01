@@ -8,13 +8,13 @@ public class UtilityAgentController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && agent.state == UtilityAgent.eState.Idle)
 		{
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
 		    {
                 UtilityObject utilityObject = raycastHit.collider.gameObject.GetComponent<UtilityObject>();
-                if (utilityObject != null)
+                if (utilityObject != null && agent.utilityAI == false)
 				{
                     Debug.Log(utilityObject.id);
                     agent.StartUtilityObject(utilityObject);

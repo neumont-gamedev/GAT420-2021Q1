@@ -8,6 +8,7 @@ public class UtilityObject : MonoBehaviour
     public string animationID;
     public float duration;
     public Transform location;
+    public Transform actionLocation;
     public GameObject actionFX;
 
     public UtilityScore[] scores { get; set; }
@@ -30,5 +31,18 @@ public class UtilityObject : MonoBehaviour
 
         return change;
 	}
+
+    public bool HasScore(string id)
+	{
+        foreach (var score in scores)
+        {
+            if (score.id == id)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }

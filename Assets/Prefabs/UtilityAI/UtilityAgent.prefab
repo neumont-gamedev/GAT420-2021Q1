@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2531206441587977478}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49540462450809908
 GameObject:
@@ -1152,12 +1152,12 @@ GameObject:
   - component: {fileID: 2531206441587977478}
   - component: {fileID: 8484933488577214332}
   - component: {fileID: 2891152671026557842}
-  - component: {fileID: 6088300151114681767}
   - component: {fileID: 7298212726734062946}
   - component: {fileID: 1246922153366192198}
   - component: {fileID: -8988805268240362705}
   - component: {fileID: -7198947785043644029}
   - component: {fileID: 1967935978388319975}
+  - component: {fileID: 853584067}
   m_Layer: 0
   m_Name: UtilityAgent
   m_TagString: Untagged
@@ -1222,20 +1222,6 @@ MonoBehaviour:
   perception: {fileID: 0}
   movement: {fileID: -7198947785043644029}
   animator: {fileID: 8484933488577214332}
---- !u!114 &6088300151114681767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2912551831571298236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df5b5d037160e04498e7764b6fbf4dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goalUI: {fileID: 0}
-  goalUIParent: {fileID: 0}
 --- !u!114 &7298212726734062946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,7 +1334,46 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   input: 1
-  decay: 0.05
+  decay: 0.1
+--- !u!114 &853584067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912551831571298236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89cef8f5f5fbfc448ae1d800f0d990e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Energy
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0.7000122
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  input: 1
+  decay: 0.1
 --- !u!1 &3081712692777280408
 GameObject:
   m_ObjectHideFlags: 0
