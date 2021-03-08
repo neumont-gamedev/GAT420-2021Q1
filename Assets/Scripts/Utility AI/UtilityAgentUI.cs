@@ -9,7 +9,7 @@ public class UtilityAgentUI : MonoBehaviour
 
     public GameObject goalUI;
     public Transform goalUIParent;
-    public Slider happinessMeter;
+    public Slider happinessSlider;
 
     void Start()
     {
@@ -24,6 +24,6 @@ public class UtilityAgentUI : MonoBehaviour
 
 	private void Update()
 	{
-        happinessMeter.value = agent.happiness;
-    }
+        happinessSlider.value = agent.happiness;
+	}
 }

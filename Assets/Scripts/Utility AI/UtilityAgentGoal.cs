@@ -16,9 +16,4 @@ public class UtilityAgentGoal : MonoBehaviour
         input = input - (decay * Time.deltaTime);
         input = Mathf.Clamp(input, -1, 1);
     }
-
-    public float GetUtilityFromValue(float value)
-	{
-        return curve.Evaluate(value);
-    }
 }

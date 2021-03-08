@@ -15,12 +15,10 @@ public class UtilityAgent : Agent
 	}
 
 	[Range(0, 1)] public float utilityThreshold = 0.25f;
-	[Range(0, 50)] public float distance = 30;
 	public bool utilityAI = true;
 
-	public eState state { get; set; } = eState.Idle;
-	public float happiness 
-	{ 
+	public float happiness
+	{
 		get
 		{
 			float utility = 0;
@@ -29,13 +27,15 @@ public class UtilityAgent : Agent
 				utility += goal.utility;
 			}
 
-			return utility / (float)goals.Length;
+			return utility / goals.Length;
 		}
 	}
+
+	public eState state { get; set; } = eState.Idle;
+
     UtilityAgentGoal[] goals;
     UtilityObject utilityObject;
 	
-
     void Start()
     {
         goals = GetComponentsInChildren<UtilityAgentGoal>();
@@ -50,9 +50,8 @@ public class UtilityAgent : Agent
 			case eState.Idle:
 				if (utilityAI)
 				{
-					UtilityObject[] utilityObjects = GetUtilityObjects(transform.position, distance);
+					UtilityObject[] utilityObjects = FindObjectsOfType<UtilityObject>();
 					utilityObject = GetMaxScoreUtilityObject(utilityObjects);
-					//utilityObject = GetMaximumUtilityObjectOverall(utilityObjects);
 					if (utilityObject != null)
 					{
 						StartUtilityObject(utilityObject);
@@ -86,7 +85,7 @@ public class UtilityAgent : Agent
 			yield return null;
 		}
 
-		// tranform to utility object action
+		// transform to utility object action
 		GetComponent<NavMeshAgent>().enabled = false;
 		if (utilityObject.actionLocation != null)
 		{
@@ -145,7 +144,7 @@ public class UtilityAgent : Agent
 	{
 		UtilityObject maxUtilityObject = null;
 
-		// find goal with the highest utility (need)
+		// find goal with the highest utility (need/desire/motive)
 		float maxUtility = 0;
 		UtilityAgentGoal maxGoal = null;
 		foreach (var goal in goals)
@@ -157,8 +156,6 @@ public class UtilityAgent : Agent
 			}
 		}
 
-		Debug.Log(maxGoal.id);
-		
 		// get the utility object with the highest score for the goal
 		if (maxUtility > utilityThreshold)
 		{
@@ -175,47 +172,5 @@ public class UtilityAgent : Agent
 		}
 
 		return maxUtilityObject;
-	}
-
-	UtilityObject GetMaximumUtilityObjectOverall(UtilityObject[] utilityObjects)
-	{
-		UtilityObject maxUtilityObject = null;
-
-		float maxUtilityDelta = 1;
-		foreach (var utilityObject in utilityObjects)
-		{
-			// for this utility object get the utility change
-			float utilityDelta = 1;
-			foreach (var goal in goals)
-			{
-				if (!utilityObject.HasScore(goal.id) || goal.utility < utilityThreshold) continue;
-
-				// get score from utility object for this goal
-				float score = utilityObject.GetScore(goal.id);
-				// set score to score + goal input (score)
-				score = score + goal.input;
-				score = Mathf.Clamp(-1.0f, 1.0f, score);
-				// get the utility value from the score
-				float utility = goal.GetUtilityFromValue(score);
-				utilityDelta = utilityDelta + (utility - goal.utility);
-				Debug.Log(utilityObject.id + ": " + (utility - goal.utility));
-			}
-
-			
-			// store the utility object with the highest utility
-			if (utilityDelta < maxUtilityDelta)
-			{
-				maxUtilityDelta = utilityDelta;
-				maxUtilityObject = utilityObject;
-			}
-		}
-
-		return maxUtilityObject;
-	}
-
-	static UtilityObject[] GetUtilityObjects(Vector3 position, float distance)
-	{
-		UtilityObject[] utilityObjects = FindObjectsOfType<UtilityObject>();
-		return utilityObjects.Where(utilityObject => (Vector3.Distance(utilityObject.transform.position, position) <= distance)).ToArray();
 	}
 }
