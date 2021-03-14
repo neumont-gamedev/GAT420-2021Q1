@@ -2319,7 +2319,7 @@ MonoBehaviour:
   animationID: Sit
   duration: 3
   location: {fileID: 1314613220}
-  actionLocation: {fileID: 0}
+  actionLocation: {fileID: 1701210926}
   actionFX: {fileID: 0}
 --- !u!65 &1279348494
 BoxCollider:
@@ -2914,7 +2914,7 @@ MonoBehaviour:
   animationID: Sit
   duration: 5
   location: {fileID: 932147467}
-  actionLocation: {fileID: 0}
+  actionLocation: {fileID: 1607682520}
   actionFX: {fileID: 0}
 --- !u!65 &1580784506
 BoxCollider:
@@ -3342,7 +3342,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 0}
+  m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1773274967
 MonoBehaviour:

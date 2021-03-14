@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Agent1
   - Node
+  - Target
+  - World
   layers:
   - Default
   - TransparentFX
